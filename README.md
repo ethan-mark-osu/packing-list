@@ -7,37 +7,34 @@ This is a simple, terminal-based Python component that generates a customized tr
 - **Destination** (optional)
 - **Budget** (optional)
 
+⚠️ This communication contract is final and will not change. Your teammate relies on this to integrate with your work.
+
 ---
 
 ## 📁 Files Included
 
-| File                    | Description                                                                 |
-|-------------------------|-----------------------------------------------------------------------------|
-| `packingData.py`       | Contains packing list data by climate, budget, activity, and destination    |
-| `getPackingList.py`   | A python script that takes in the climate, activites, destination, and budget and will return the packing list that matches the parameters provided |
-| `TestPackingList.py` | A terminal script that calls the packing list generator with hardcoded values |
+| File                | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| `packingData.py`    | Contains packing list data categorized by climate, budget, activity, and destination |
+| `getPackingList.py` | Contains the `generate_packing_list()` function that generates the list     |
+| `TestPackingList.py`| Example script that calls the packing list generator with hardcoded inputs  |
 
 ---
 
 ## 🚀 How It Works
 
-The script combines:
-- A **climate-specific** packing list (based on your selected climate and budget)
-- **Activity-specific** add-ons (e.g., hiking, relaxing)
-- **Destination-specific** extras (for fun or practical items like a metro pass)
+The generator builds a packing list using:
+- A **base list** based on climate and budget
+- **Activity-specific** additions (e.g., hiking gear, swimwear)
+- **Destination-specific** extras (e.g., metro card, guidebook)
 
----
-# 🎒 Packing List Microservice (Microservice A)
-
-This microservice generates a customized packing list based on climate, activities, destination, and travel budget.
-
-⚠️ This communication contract is final and will not change. Your teammate relies on this to integrate with your work.
+All logic runs in-memory, with no external API calls or file dependencies.
 
 ---
 
-## 📥 How to Request Data
+## 📥 How to Programmatically Request Data
 
-User must **call the `generate_packing_list()` function** directly with the required arguments.
+Teammates must call the function `generate_packing_list()` with four arguments:
 
 ### Function Signature
 
