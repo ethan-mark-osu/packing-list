@@ -27,14 +27,69 @@ The script combines:
 - **Destination-specific** extras (for fun or practical items like a metro pass)
 
 ---
+# 🎒 Packing List Microservice (Microservice A)
 
-## ✅ Usage
+This microservice generates a customized packing list based on climate, activities, destination, and travel budget.
 
-1. Open `TestPackingList.py`
-2. Modify the variables at the bottom of the file:
+⚠️ This communication contract is final and will not change. Your teammate relies on this to integrate with your work.
+
+---
+
+## 📥 How to Request Data
+
+User must **call the `generate_packing_list()` function** directly with the required arguments.
+
+### Function Signature
 
 ```python
-climate = "cold"
-activities = ["relaxing", "cultural"]
-destination = "Paris"
-budget = "high"
+generate_packing_list(climate: str, activities: list[str], destination: str, budget: str) -> dict
+```
+### Example Request
+```python
+from packing_list import generate_packing_list
+
+my_list = generate_packing_list(
+    climate="cold",
+    activities=["relaxing", "cultural"],
+    destination="Paris",
+    budget="high"
+)
+```
+### Example Response
+```python
+{
+    "destination": "Paris",
+    "climate": "cold",
+    "activities": ["relaxing", "cultural"],
+    "budget": "high",
+    "packing_list": [
+        "wool coat",
+        "comfortable walking shoes",
+        "universal power adapter",
+        "museum pass",
+        "gloves",
+        "travel insurance documents"
+    ]
+}
+```
+### UML Sequence Diagram
+```sql
++------------------+         +--------------------------+
+|  Teammate Code   |         | Packing List Microservice|
++------------------+         +--------------------------+
+        |                               |
+        |  Call generate_packing_list() |
+        |------------------------------>|
+        |                               |
+        |     Generate in-memory list   |
+        |                               |
+        |      Return packing data      |
+        |<------------------------------|
+        |                               |
+
+```
+
+
+
+
+
